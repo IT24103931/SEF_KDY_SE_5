@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => (
   <footer className="site-footer">
     <div className="container footer-grid">
+      {/* Keep supporting navigation available without taking focus from the main content. */}
       <div>
         <Link className="brand footer-brand" to="/">
           <span className="brand-mark"><Leaf size={18} /></span>
