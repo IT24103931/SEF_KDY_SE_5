@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+// Accept either a backend root URL or an API URL so deployment setup is less error-prone.
+const configuredApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const apiBaseUrl = configuredApiUrl.replace(/\/$/, '').endsWith('/api')
+  ? configuredApiUrl.replace(/\/$/, '')
+  : `${configuredApiUrl.replace(/\/$/, '')}/api`;
+
 // Keep the backend URL in one place so deployment only needs one environment change.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://sef-kdy-se-5-1.onrender.com/',
+  baseURL: apiBaseUrl,
   headers: { 'Content-Type': 'application/json' }
 });
 
