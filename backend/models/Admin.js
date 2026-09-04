@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+//save
 // Store only a hashed password so admin credentials never remain in plain text.
 const adminSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true, lowercase: true, trim: true },

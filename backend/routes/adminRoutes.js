@@ -12,7 +12,7 @@ import {
 
 const router = express.Router();
 
-// Every admin operation requires a valid JWT.
+// require jwt
 router.use(protectAdmin);
 router.get('/stats', getAdminStats);
 router.get('/reports', getAdminReports);

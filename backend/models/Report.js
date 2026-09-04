@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-
+// Store only a hashed password so admin credentials never remain in plain text.
 const wasteTypes = [
   'Illegal Dumping',
   'Overflowing Garbage',
