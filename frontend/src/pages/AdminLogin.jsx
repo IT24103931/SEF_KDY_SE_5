@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { adminLogin } from '../services/api.js';
 
-// Keep admin login state local because it is only needed on this page.
+// keep admin login.
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: '', password: '' });

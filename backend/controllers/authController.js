@@ -11,7 +11,7 @@ const adminLogin = async (req, res, next) => {
     if (!email || typeof password !== 'string' || !password) {
       return res.status(400).json({ success: false, message: 'Email and password are required.' });
     }
-
+//condition
     const admin = await Admin.findOne({ email });
     const passwordMatches = admin && await bcrypt.compare(password, admin.passwordHash);
 

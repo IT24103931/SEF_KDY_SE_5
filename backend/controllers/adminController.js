@@ -9,7 +9,7 @@ const logAction = async (adminId, reportId, action, details) => {
   await AuditLog.create({ adminId, reportId, action, details });
 };
 
-// Return dashboard totals and simple breakdowns for the administrator.
+//return dashboard
 const getAdminStats = async (req, res, next) => {
   try {
     const [totalReports, highPriorityReports, pendingReports, resolvedReports, byDistrict, byCategory] = await Promise.all([
