@@ -30,6 +30,7 @@ const Reports = () => {
   };
 
   useEffect(() => {
+    // Debounce filter changes so typing in search does not trigger a request per keystroke.
     const timer = setTimeout(loadReports, 250);
     return () => clearTimeout(timer);
   }, [filters]);

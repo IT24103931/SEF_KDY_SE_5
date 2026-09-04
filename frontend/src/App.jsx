@@ -11,6 +11,7 @@ import Reports from './pages/Reports.jsx';
 const App = () => (
   <div className="app-shell">
     <Navbar />
+    {/* Keep navigation and page content inside one shared application shell. */}
     <main className="main-content">
       <Routes>
         <Route path="/" element={<Home />} />
