@@ -67,8 +67,10 @@ const createReport = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Please correct the highlighted fields.', errors });
     }
 
+    // Allowlist submitted fields so unexpected request properties are not persisted.
     const reportFields = Object.fromEntries(allowedReportFields.filter((field) => values[field] !== undefined).map((field) => [field, values[field]]));
     const sensitiveLocation = values.sensitiveLocation === true;
+
     const priority = calculatePriority({ ...values, sensitiveLocation });
     const report = await Report.create({ ...reportFields, sensitiveLocation, ...priority });
 
@@ -83,9 +85,11 @@ const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const getReports = async (req, res, next) => {
   try {
     const { search, district, wasteType, priorityLevel, status, sort = 'newest' } = req.query;
+    // Keep archived reports out of public results while preserving legacy documents.
     const query = { $and: [activeReportFilter] };
 
     if (search?.trim()) {
+      // Treat search text literally instead of allowing it to change the regex query.
       const expression = new RegExp(escapeRegex(search.trim()), 'i');
       query.$and.push({ $or: [
         { area: expression },

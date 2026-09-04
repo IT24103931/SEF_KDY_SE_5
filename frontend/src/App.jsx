@@ -19,6 +19,7 @@ const App = () => (
         <Route path="/about" element={<About />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        {/* Return unknown paths to the public home page. */}
         <Route path="*" element={<Home />} />
       </Routes>
     </main>
