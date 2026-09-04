@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Keep the backend URL in one place so deployment only needs one environment change.
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_URL || 'https://sef-kdy-se-5-1.onrender.com/',
   headers: { 'Content-Type': 'application/json' }
 });
 
