@@ -13,6 +13,7 @@ const app = express();
 // Trust Render's proxy so rate limiting sees the real client address.
 app.set('trust proxy', 1);
 const port = process.env.PORT || 5000;
+// Allow local development and the deployed frontend to call this API.
 const allowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',

@@ -7,6 +7,7 @@ const activeReportFilter = { $or: [{ isDeleted: false }, { isDeleted: { $exists:
 
 const validateReportInput = (body) => {
   const errors = {};
+  // Work on a copy so validation can normalize text without mutating req.body.
   const values = { ...body };
 
   for (const field of requiredFields) {
